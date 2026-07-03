@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
-import Header from "../components/Header";
+import { Sparkles } from "lucide-react";
+// import Header from "../components/Header";
 import SearchForm from "../components/SearchForm";
 import MarketCard from "../components/MarketCard";
 import CompetitionCard from "../components/CompetitionCard";
@@ -43,15 +44,23 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-slate-100">
       <Toaster position="top-right" />
-      <Header />
+      {/* <Header /> */}
 
       {/* Hero: centered landing with a single search form */}
       <section className="min-h-screen flex items-center">
         <div className="mx-auto w-full max-w-4xl px-4 sm:px-6">
           <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl">
             <div className="text-center">
-              <h1 className="text-4xl font-extrabold text-slate-900 sm:text-5xl">KeyGenius</h1>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">Real-time Google Play ASO intelligence for indie game developers — find better keywords, spot competition, and get title recommendations.</p>
+              <div className="flex justify-center">
+                <div className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-sm font-semibold text-brand-700">
+                  <Sparkles className="h-4 w-4" />
+                  Google Play ASO
+                </div>
+              </div>
+
+              <h1 className="mt-4 text-6xl font-bold text-slate-900 sm:text-6xl">KeyGenius</h1>
+
+              <p className="mx-auto mt-4 max-w-3xl text-lg text-slate-600">Real-time Google Play ASO intelligence for indie game developers — find better keywords, spot competition, and get title recommendations.</p>
             </div>
 
             <div className="mt-8">

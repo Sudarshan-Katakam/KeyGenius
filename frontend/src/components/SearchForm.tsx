@@ -28,7 +28,7 @@ const SearchForm = ({ onAnalyze, isLoading }: SearchFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(submitHandler)} className="space-y-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+    <form onSubmit={handleSubmit(submitHandler)} className="space-y-6">
       <div>
         <label htmlFor="gameName" className="block text-sm font-medium text-slate-700">
           Game Name
@@ -64,7 +64,7 @@ const SearchForm = ({ onAnalyze, isLoading }: SearchFormProps) => {
         <button
           type="submit"
           disabled={isLoading}
-          className="inline-flex items-center justify-center rounded-2xl bg-brand-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex items-center justify-center rounded-full bg-brand-600 px-8 py-3 text-base font-semibold text-white transition hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isLoading ? (
             <>
@@ -77,7 +77,7 @@ const SearchForm = ({ onAnalyze, isLoading }: SearchFormProps) => {
         <button
           type="button"
           onClick={() => reset()}
-          className="rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-900"
+          className="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-900"
         >
           Reset
         </button>
