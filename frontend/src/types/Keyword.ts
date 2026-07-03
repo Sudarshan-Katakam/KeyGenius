@@ -5,4 +5,5 @@ export interface KeywordAnalysis {
   relevancy: number;
   popularity: number;
   final_score: number;
+  trend_series?: number[];
 }

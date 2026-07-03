@@ -33,17 +33,17 @@ const ResultsCard = ({ gameName, country, result, isLoading }: ResultsCardProps)
       <div className="grid gap-6 md:grid-cols-2">
         <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
           <h2 className="text-lg font-semibold text-slate-900">Market Score</h2>
-          <p className="mt-4 text-5xl font-bold text-brand-600">{result.market_score}</p>
+          <p className="mt-4 text-5xl font-bold text-brand-600">{result.market_score.value}</p>
           <p className="mt-2 text-sm text-slate-600">A strong score means better visibility potential in Google Play.</p>
         </div>
         <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
           <h2 className="text-lg font-semibold text-slate-900">Competition Score</h2>
-          <p className="mt-4 text-5xl font-bold text-slate-900">{result.competition_score}</p>
+          <p className="mt-4 text-5xl font-bold text-slate-900">{result.competition_score.value}</p>
           <p className="mt-2 text-sm text-slate-600">Lower competition is easier to rank against.</p>
         </div>
       </div>
 
-      <RecommendationList names={result.recommended_names} />
+      <RecommendationList names={[result.recommended_name.name]} />
 
       <div className="flex justify-end">
         <ExportButton gameName={gameName} country={country} result={result} />

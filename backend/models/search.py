@@ -1,15 +1,8 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class SearchRequest(BaseModel):
+    model_config = ConfigDict(populate_by_name=True, json_schema_extra={"example": {"gameName": "carrom", "country": "IN"}})
+
     game_name: str = Field(..., alias="gameName")
     country: str
-
-    class Config:
-        allow_population_by_field_name = True
-        schema_extra = {
-            "example": {
-                "gameName": "carrom",
-                "country": "IN"
-            }
-        }

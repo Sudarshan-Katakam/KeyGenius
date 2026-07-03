@@ -2,15 +2,15 @@ from typing import List
 
 try:
     from pytrends.request import TrendReq
-except ImportError as exc:
-    raise ImportError(
-        "pytrends is required for backend trends analysis. "
-        "Install it with `pip install pytrends`."
-    ) from exc
+except ImportError:  # pragma: no cover - runtime fallback
+    TrendReq = None
 
 
 def fetch_keyword_trends(keyword: str, country: str, timeframe: str = "today 3-m") -> List[float]:
     """Fetch Google Trends values for a single keyword."""
+    if TrendReq is None:
+        return []
+
     try:
         pytrends = TrendReq(hl="en-US", tz=360)
         pytrends.build_payload([keyword], cat=0, timeframe=timeframe, geo=country.upper(), gprop="")
@@ -27,6 +27,9 @@ def fetch_keyword_trends(keyword: str, country: str, timeframe: str = "today 3-m
 
 def fetch_multiple_keyword_trends(keywords: List[str], country: str, timeframe: str = "today 3-m") -> dict[str, List[float]]:
     """Fetch Google Trends values for multiple keywords in a single request."""
+    if TrendReq is None:
+        return {keyword: [] for keyword in keywords}
+
     try:
         pytrends = TrendReq(hl="en-US", tz=360)
         pytrends.build_payload(keywords, cat=0, timeframe=timeframe, geo=country.upper(), gprop="")

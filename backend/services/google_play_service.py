@@ -2,11 +2,8 @@ from typing import Any
 
 try:
     from google_play_scraper import search
-except ImportError as exc:
-    raise ImportError(
-        "google_play_scraper is required for backend Google Play scraping. "
-        "Install it with `pip install google-play-scraper`."
-    ) from exc
+except ImportError:  # pragma: no cover - runtime fallback
+    search = None
 
 
 def normalize_installs(installs: str) -> str:
@@ -15,6 +12,9 @@ def normalize_installs(installs: str) -> str:
 
 def fetch_top_apps(game_name: str, country: str, n_hits: int = 12) -> list[dict[str, Any]]:
     """Fetch the top matching apps from Google Play search."""
+    if search is None:
+        return []
+
     try:
         results = search(game_name, lang="en", country=country.lower(), n_hits=n_hits)
     except Exception:

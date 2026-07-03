@@ -8,3 +8,4 @@ class KeywordAnalysis(BaseModel):
     relevancy: float
     popularity: float
     final_score: float
+    trend_series: list[int] | None = None
